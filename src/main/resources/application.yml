@@ -1,0 +1,21 @@
+server:
+  port: 8554
+spring:
+  devtools:
+    restart:
+      enabled: false
+  datasource:
+    url: jdbc:mysql://localhost:3306/Audit2?createDatabaseIfNotExist=true&useSSL=false
+    username: prince
+    password: Prince212@
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  thymeleaf:
+    mode: LEGACYHTML5
