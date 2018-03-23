@@ -21,6 +21,7 @@ import com.example.audittracker.domain.Tracker;
 import com.example.audittracker.model.ActiveTimeInfoTO;
 import com.example.audittracker.model.ActiveTimeTO;
 import com.example.audittracker.model.EmployeeActiveTimeTO;
+import com.example.audittracker.model.LoginTO;
 import com.example.audittracker.model.individual.record.EmployeeDataTO;
 import com.example.audittracker.service.EmployeeService;
 import com.example.audittracker.util.CommonUtil;
@@ -37,6 +38,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeDao employeeDao;
+    
     
     @Autowired
     private ManagerServiceImpl managerServiceImpl;
@@ -283,5 +285,30 @@ public class EmployeeServiceImpl implements EmployeeService {
 		Employee employee = employeeDao.findByEmployeeId(employeeId);
 		List<ActiveTimeInfoTO> activeTimeInfoTOs = managerServiceImpl.getActiveTimeByDate(employee.getManagerId().getEmployeeId(), date);
 		return activeTimeInfoTOs;
+	}
+
+	@Override
+	public LoginTO getLogin(String id, String pass) {
+		Employee emp=employeeDao.findByEmailAndPass(id, pass);
+		LoginTO login = new LoginTO();
+		if(emp != null){
+			login.setEmployeeId(emp.getEmployeeId());
+			login.setFirstName(emp.getFirstName());
+			login.setLastName(emp.getFirstName());
+			if(employeeDao.findByManagerId(emp).size()>0){
+				login.setRole("manager");
+			}
+			else{
+				login.setRole("employee");
+			}
+		}
+		else{
+			login.setEmployeeId("invalid");
+			login.setFirstName("");
+			login.setLastName("");
+			login.setRole("");
+			
+		}
+		return login;
 	}
 }

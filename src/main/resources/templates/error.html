@@ -1,0 +1,34 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="/tracker/css/tracker.css"></link>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous"></link>
+<title>Tracker</title>
+</head>
+<body class="jumbotron">
+	<div class="container">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
+			style="margin-top: 10%">
+			<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"></div>
+			<img class="col-xs-12 col-sm-12 col-md-4 col-lg-4"
+				src="/tracker/images/concur.png" />
+		</div>
+		<h1 class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
+			style="color: ghostwhite; font-size: 65px">TRACKER</h1>
+		<div class="error-block col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin: 5% 0">
+		<h3 id="global-error-status" th:text="${exception.error+' : '+exception.status}"></h3>
+		<h4 id="global-error-message" th:text="${exception.message}"></h4>
+		</div>
+		<div class="span">
+			<a class="btn btn-primary" href="/tracker/">Home</a>
+		</div>
+	</div>
+</body>
+</html>

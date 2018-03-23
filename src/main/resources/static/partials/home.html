@@ -1,0 +1,55 @@
+<section data-ng-init="initControl()"
+	data-ng-controller="EmployeeController">
+	<div class="wrapper">
+		
+		<button type="button" class="btn btn-default pull-right" data-ng-show="isValid" data-ng-click="goTeam()">team</button>
+		<div class="row" data-ng-hide="date">
+		<div  class="col-xs-12 col-sm-12 col-md-8 col-lg-8"
+			style="text-align: center;">
+			<canvas id="totalActiveTime"
+				class="chart data-chart-doughnut data-chart-labels"
+				data-chart-data="totalData" data-chart-labels="labels"
+				data-chart-options="options" data-chart-click="past"
+				data-chart-colors="colors">
+			</canvas>
+			<div class="leave-space1" id="employee-date-hmd-container"></div>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+					<div
+						class="leave-space ibox-leader panel panel-default panel-body init-back">
+						<div class="ibox-title row">
+							<div class="col-md-10">
+								<b>Leadership Board</b>
+							</div>
+							<div class=" ibox-tools col-md-2">
+								<a class="pull-right collapse-link anchor-cursor"
+									data-ng-click="clickleader()"> <span
+									class=" leader glyphicon glyphicon-chevron-up"></span>
+								</a>
+							</div>
+						</div>
+						<div class=" ibox-content-leader row">
+							<table class="table table-responsive table-hover">
+								<thead>
+									<tr style="background-color: #97bbcd77">
+										<th class="keep-center">Rank</th>
+										<th class="keep-center">Employee Name</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-ng-repeat="tempsort in tempsorts">
+										<td class="keep-center">{{rank[$index]}}</td>
+										<td class="keep-center">{{employees[$index]}}</td>
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				</div>
+		
+	</div>
+</section>

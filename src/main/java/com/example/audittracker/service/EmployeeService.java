@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.audittracker.model.ActiveTimeInfoTO;
 import com.example.audittracker.model.EmployeeActiveTimeTO;
+import com.example.audittracker.model.LoginTO;
 import com.example.audittracker.model.individual.record.EmployeeDataTO;
 
 
@@ -25,6 +26,8 @@ public interface EmployeeService {
 	ActiveTimeInfoTO getActiveTimeForEmployeeByTime(String empId, String date, String startTime, String endTime);
 
 	String getStartTime(String empId);
+	
+	LoginTO getLogin(String id,String pass);
 
 	List<ActiveTimeInfoTO> getLeadershipDataForEmployee(String employeeId, String date);
 

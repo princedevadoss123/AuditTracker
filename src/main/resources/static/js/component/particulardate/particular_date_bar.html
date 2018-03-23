@@ -1,0 +1,23 @@
+<section>
+<div data-ng-controller="DateController" data-ng-hide="partdate" class="ibox-graph panel panel-default panel-body init-back">
+				<div class="ibox-title row">
+					<div class="col-md-10">
+						<b>Team Contribution  {{'( '+date1+' )'}} </b>
+					</div>
+					<div class=" ibox-tools col-md-2">
+						<a class="pull-right collapse-link anchor-cursor"
+							data-ng-click="clickgraph()"> <span
+							class=" graph glyphicon glyphicon-chevron-up"></span>
+						</a>
+					</div>
+				</div>
+			<div class=" ibox-content-graph row">
+				<canvas id="totalActiveTimeDate" 
+						class="chart data-chart-bar data-chart-labels" style="float: left"
+						data-chart-data="empDataDate" data-chart-labels="empLabelDate"
+						data-chart-series="seriesdate" data-chart-options="datemgroptions"
+						data-chart-click="individual" data-chart-colors="colordet">
+             </canvas>
+			</div>
+</div>
+</section>

@@ -1,0 +1,251 @@
+<section data-ng-init="initControl()"
+	data-ng-controller="ManagerController">
+	
+	<div class="row">
+	<div class="container col-xs-12 col-sm-12 col-md-4 col-lg-4">
+		<ul class="nav nav-tabs nav-justified">
+			<li id="lidaterangetabli" class="nav"><a data-toggle="tab"
+				href="#daterangetab" data-ng-click="setSelectedTab('daterangetab')">Date
+					Range</a></li>
+			<li id="lidatetabli" class="nav"><a data-toggle="tab"
+				href="#datetab" data-ng-click="setSelectedTab('datetab')">Date</a></li>
+			<!-- <li id="litimetabli" class="nav"><a data-toggle="tab"
+				href="#timetab" data-ng-click="setSelectedTab('timetab')">Time
+					Range</a></li> -->
+		</ul>
+		<div class="tab-content">
+			<div id="daterangetab" class="panel-heading" data-ng-hide="daterange">
+				<br />
+				<h3>Date Range</h3>
+				<form novalidate name="managerDRQueryForm"
+					data-ng-submit="managerDRQuery()">
+					<div class="input-group">
+						<span class="input-group-addon"
+							style="min-width: 100px; text-align: right;">Start Date</span><input
+							class="form-control" name="startDate" type="date"
+							placeholder="Enter start date" required
+							data-ng-model="tracker.startDate" />
+					</div>
+					<br />
+					<div class="input-group">
+						<span class="input-group-addon"
+							style="min-width: 100px; text-align: right;"> End Date </span><input
+							class="form-control" name="endDate" type="date"
+							placeholder="Enter end date" required
+							data-ng-model="tracker.endDate" />
+					</div>
+					<br />
+					<div id="date-range-error" class="error-block"></div>
+					<br />
+					<div class="pull-right">
+						<button type="submit" class="btn btn-primary"
+							data-ng-disabled="form.$invalid">Submit</button>
+
+						
+					</div>
+				</form>
+			</div>
+			<div id="datetab" class="panel-heading" data-ng-hide="date">
+				<br />
+				<h3>Particular Date</h3>
+				<form novalidate name="managerDateForm"
+					data-ng-submit="managerDateQuery()">
+					<div class="input-group">
+						<span class="input-group-addon"
+							style="min-width: 100px; text-align: right;"> Date </span><input
+							class="form-control" name="Date" type="date"
+							placeholder="Enter date" required data-ng-model="tracker.PDate" />
+					</div>
+					<br />
+					<button type="submit" class="btn btn-primary pull-right"
+						data-ng-disabled="form.$invalid">Submit</button>
+				</form>
+				<div data-ng-hide="date">
+
+					<div
+						class="leave-space ibox-leader panel panel-default panel-body init-back">
+						<div class="ibox-title row">
+							<div class="col-md-10">
+								<b>Leadership Board</b>
+							</div>
+							<div class=" ibox-tools col-md-2">
+								<a class="pull-right collapse-link anchor-cursor"
+									data-ng-click="clickleader()"> <span
+									class=" leader glyphicon glyphicon-chevron-up"></span>
+								</a>
+							</div>
+						</div>
+						<div class=" ibox-content-leader row">
+							<table class="table table-responsive table-hover">
+								<thead>
+									<tr style="background-color: #97bbcd77">
+										<th class="keep-center">Rank</th>
+										<th class="keep-center">Employee Name</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-ng-repeat="employee in employees">
+										<td class="keep-center">{{rank[$index]}}</td>
+										<td class="keep-center">{{employees[$index]}}</td>
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!--Finding wrt to time range  -->
+			<div id="timetab" class="panel-heading" data-ng-hide="timerange">
+				<br />
+				<h3>Time Range</h3>
+				<form novalidate name="managerTRQueryForm"
+					data-ng-submit="managerTRQuery()">
+
+					<div class="input-group">
+						<span class="input-group-addon"
+							style="min-width: 100px; text-align: right;"> Date </span><input
+							class="form-control" name="Date" type="date"
+							placeholder="Enter date" required data-ng-model="tracker.P1Date" />
+					</div>
+					<br />
+					<div class="input-group">
+						<span class="input-group-addon"
+							style="min-width: 100px; text-align: right;"> Start Time </span><input
+							class="form-control" name="startTime" type="time"
+							placeholder="Enter start time" required
+							data-ng-model="tracker.startTime" />
+					</div>
+					<br />
+					<div class="input-group">
+						<span class="input-group-addon"
+							style="min-width: 100px; text-align: right;"> End Time </span><input
+							class="form-control" name="endTime" type="time"
+							placeholder="Enter end time" required
+							data-ng-model="tracker.endTime" />
+					</div>
+					<br />
+					<div id="time-range-error" class="error-block"></div>
+					<br />
+					<button type="submit" class="btn btn-primary pull-right"
+						data-ng-disabled="form.$invalid">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="wrapper">
+
+		<button type="button" class="btn btn-default pull-right" ng-click="goHome()">home</button>
+
+		<div data-ng-hide="daterange"
+			class="col-xs-12 col-sm-12 col-md-8 col-lg-8 daterange">
+		
+   
+           
+            
+             <div data-ng-hide="hourwise"
+				class="ibox-hourwise panel panel-default panel-body init-back">
+				<div class="ibox-title row">
+					<div class="col-md-10">
+						<b>Employee Contribution ( {{empname}} {{date1}} )</b>
+					</div>
+					<div class=" ibox-tools col-md-2">
+						<a class="pull-right collapse-link anchor-cursor"
+							data-ng-click="clickhourremove()"> <span
+							class=" hourremove glyphicon glyphicon-remove"></span>
+						</a> <a class="pull-right collapse-link anchor-cursor"
+							data-ng-click="clickhour()"> <span
+							class=" hour glyphicon glyphicon-chevron-up"></span>
+						</a>
+					</div>
+				</div>
+				<div class=" ibox-content-hour row">
+			<div id="team-dr-hmd-container"></div>
+			</div>
+			</div>
+			<div data-ng-include="'/js/component/particulardate/particular_date_bar.html'"></div>
+			<div data-ng-include="'/js/component/dateRange/daterange_bar.html'"></div>
+			
+		</div>
+		<div data-ng-hide="date"
+			class="col-xs-12 col-sm-12 col-md-8 col-lg-8 date">
+			
+
+			<div data-ng-hide="hourwise"
+				class="ibox-hourwise panel panel-default panel-body init-back">
+				<div class="ibox-title row">
+					<div class="col-md-10">
+						<b>Employee Contribution( {{empname}} {{date1}} )</b>
+					</div>
+					<div class=" ibox-tools col-md-2">
+						<a class="pull-right collapse-link anchor-cursor"
+							data-ng-click="clickhourremove()"> <span
+							class=" hourremove glyphicon glyphicon-remove"></span>
+						</a> <a class="pull-right collapse-link anchor-cursor"
+							data-ng-click="clickhour()"> <span
+							class=" hour glyphicon glyphicon-chevron-up"></span>
+						</a>
+					</div>
+				</div>
+				<div class=" ibox-content-hour row">
+					<div id="team-date-hmd-container"></div>
+				</div>
+			</div>
+			<div data-ng-include="'/js/component/particulardate/particular_date_bar.html'"></div>
+			<div class="ibox-table panel panel-default panel-body init-back">
+				<div class="ibox-title row">
+					<div class="col-md-10">
+						<b>Team Contribution ( {{date1}} )</b>
+					</div>
+					<div class=" ibox-tools col-md-2">
+						<a class="pull-right collapse-link anchor-cursor"
+							data-ng-click="clicktable()"> <span
+							class="table1 glyphicon glyphicon-chevron-up"></span>
+						</a>
+					</div>
+				</div>
+				<div class=" ibox-content-table row">
+					<table class="table table-responsive table-hover">
+						<thead>
+							<tr style="background-color: #97bbcd77">
+								<th class="keep-center">Employee ID</th>
+								<th class="keep-center">Employee Name</th>
+								<th class="keep-center">Start Time</th>
+								<th class="keep-center">End Time</th>
+								<th class="keep-center">Active Minutes</th>
+								<th class="keep-center">Logged In Time</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr data-ng-repeat="mgrrow in mgrrows">
+								<td class="keep-center">{{mgrrow.employeeId}}</td>
+								<td class="keep-center">{{mgrrow.firstName}}
+									{{mgrrow.lastName}}</td>
+								<td class="keep-center">{{mgrrow.proposedStartTime}}</td>
+								<td class="keep-center">{{mgrrow.proposedEndTime}}</td>
+								<td class="keep-center">{{activemin[$index]}}</td>
+								<td class="keep-center">{{loggedin[$index]}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div data-ng-hide="timerange"
+			class="col-xs-12 col-sm-12 col-md-8 col-lg-8 date">
+			<div data-ng-repeat="trackerTR in rangeDataMgr">
+				<canvas id="totalActiveTime2"
+					class="chart data-chart-doughnut data-chart-labels"
+					style="float: left" data-chart-data="rangeDataMgr[$index]"
+					data-chart-labels="rangelabelsMgr[$index]"
+					data-chart-options="rangeoptionsMgr[$index]"
+					data-chart-colors="rangecolorsMgr">
+             </canvas>
+			</div>
+		</div>
+	</div>
+	</div>
+	
+</section>

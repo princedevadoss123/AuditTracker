@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.audittracker.model.ActiveTimeInfoTO;
 import com.example.audittracker.model.EmployeeActiveTimeTO;
+import com.example.audittracker.model.LoginTO;
 import com.example.audittracker.model.individual.record.EmployeeDataTO;
 import com.example.audittracker.service.EmployeeService;
 
@@ -35,7 +36,9 @@ public class EmployeeController {
 	
 	@Autowired
 	private EmployeeService employeeService;
-
+	
+	
+	
 	/**
 	 * Records the active time data for an employee.
 	 * 
@@ -78,7 +81,13 @@ public class EmployeeController {
 			@ApiParam(value = "Date", required = true) @PathVariable(value = "date") String date) {
 		return employeeService.getActiveTimeForAnEmployeeOnDate(empid, date);
 	}
-
+	
+	@ApiOperation(value = "Get Login Details", notes = "Get Login Details for an employee", response = LoginTO.class)
+	@RequestMapping(value = "/{id}/{passwd}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public LoginTO getLogin(@PathVariable(value = "id") String empid,
+			@ApiParam(value = "password", required = true) @PathVariable(value = "passwd") String passwd) {
+		return employeeService.getLogin(empid,passwd);
+	}
 	/**
 	 * Gets active time information for an employee for a given Date Range.
 	 * 

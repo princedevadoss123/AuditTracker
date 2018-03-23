@@ -27,8 +27,19 @@ public class Employee {
     @Id
     @Column(name = "emp_id", length = 50)
     private String employeeId;
+    
+    @Column(name = "passwd", length = 50)
+    private String password;
+    
+    public String getPassword() {
+		return password;
+	}
 
-    @Column(name = "first_name", nullable = false, length = 50)
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	@Column(name = "first_name", nullable = false, length = 50)
     private String firstName;
 
     @Column(name = "last_name", nullable = false, length = 50)

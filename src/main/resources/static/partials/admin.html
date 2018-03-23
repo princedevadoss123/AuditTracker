@@ -1,0 +1,315 @@
+<section data-ng-init="initControl()"
+	data-ng-controller="AdminController">
+	<div class="container col-xs-12 col-sm-12 col-md-5 col-lg-4">
+		<ul class="nav nav-tabs nav-justified">
+			<li class="nav"><a data-toggle="tab" href="#indtabs">Employee</a></li>
+			<li class="nav"><a data-toggle="tab" href="#teamtabs">Team</a></li>
+		</ul>
+		<div class="tab-content">
+			<div id="teamtabs" class="tab-pane fade">
+
+				<ul class="nav nav-tabs nav-justified">
+					<li id="lidaterangeteamtabli" class="nav"><a data-toggle="tab"
+						href="#daterangeteamtab"
+						data-ng-click="setSelectedTab('daterangeteamtab')">Date Team
+							Range</a></li>
+					<li id="lidateteamtabli" class="nav"><a data-toggle="tab"
+						href="#dateteamtab" data-ng-click="setSelectedTab('dateteamtab')">Team
+							Date</a></li>
+					<li id="litimeteamtabli" class="nav"><a data-toggle="tab"
+						href="#timeteamtab" data-ng-click="setSelectedTab('timeteamtab')">Time
+							Team Range</a></li>
+				</ul>
+			</div>
+			<div id="indtabs" class="tab-pane fade">
+
+				<ul class="nav nav-tabs nav-justified">
+					<li id="lidaterangetabli" class="nav"><a data-toggle="tab"
+						href="#daterangetab"
+						data-ng-click="setSelectedTab('daterangetab')">Date Range</a></li>
+					<li id="lidatetabli" class="nav"><a data-toggle="tab"
+						href="#datetab" data-ng-click="setSelectedTab('datetab')">Date</a></li>
+					<li id="litimetabli" class="nav"><a data-toggle="tab"
+						href="#timetab" data-ng-click="setSelectedTab('timetab')">Time
+							Range</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="tab-content">
+			<div id="daterangeteamtab" class="tab-pane fade">
+				<br />
+				<h3>Range of Dates</h3>
+				<form novalidate name="teamDRQueryForm"
+					data-ng-submit="teamDRQuery()">
+
+					<div class="input-group">
+						<span class="input-group-addon">Start Datet</span><input
+							class="form-control" name="teamstartDate" type="date"
+							placeholder="Enter start date" required
+							data-ng-model="tracker.teamstartDate" />
+					</div>
+					<br />
+					<div class="input-group">
+						<span class="input-group-addon"> End Date </span><input
+							class="form-control" name="teamendDate" type="date"
+							placeholder="Enter end date" required
+							data-ng-model="tracker.teamendDate" />
+					</div>
+					<br />
+
+					<div class="input-group">
+						<span class="input-group-addon"> Manager Id </span><input
+							class="form-control" name="team_manager_id" type="text"
+							placeholder="Enter manager id" required
+							data-ng-model="tracker.team_manager_id" />
+					</div>
+
+					<div id="date-range-error" class="error-block"></div>
+					<br />
+
+					<!--  <button type="submit" class="btn btn-primary ">Submit</button>-->
+
+					<button type="submit" class="btn btn-primary pull-right"
+						data-ng-disabled="form.$invalid">Submit</button>
+				</form>
+			</div>
+
+
+
+			<div id="timeteamtab" class="tab-pane fade">
+				<br />
+				<h3>Time Range</h3>
+				<form novalidate name="teamTRQueryForm"
+					data-ng-submit="teamTRQuery()">
+
+					<div class="input-group">
+						<span class="input-group-addon"> Date </span><input
+							class="form-control" name="team_Date" type="date"
+							placeholder="Enter date" required
+							data-ng-model="tracker.team_Date" />
+					</div>
+					<br />
+					<div class="input-group">
+						<span class="input-group-addon"> Start Time </span><input
+							class="form-control" name="team_startTime" type="time"
+							placeholder="Enter start time" required
+							data-ng-model="tracker.team_startTime" />
+					</div>
+					<br />
+					<div class="input-group">
+						<span class="input-group-addon"> End Time </span><input
+							class="form-control" name="team_endTime" type="time"
+							placeholder="Enter end time" required
+							data-ng-model="tracker.team_endTime" />
+					</div>
+					<br />
+
+					<div class="input-group">
+						<span class="input-group-addon"> manager Id </span><input
+							class="form-control" name="team-employeeid" type="text"
+							placeholder="Enter manager id" required
+							data-ng-model="tracker.teamemployeeid" />
+					</div>
+
+					<br />
+					<button type="submit" class="btn btn-primary pull-right"
+						data-ng-disabled="form.$invalid">Submit</button>
+					<!-- <button type="submit" class="btn btn-primary"
+					data-ng-disabled="form.$invalid">Submit</button>  -->
+				</form>
+			</div>
+
+
+
+
+			<div id="dateteamtab" class="tab-pane fade">
+				<br />
+				<h3>Particular Date</h3>
+				<form novalidate name="teamDateForm"
+					data-ng-submit="teamDateQuery()">
+					<div class="input-group">
+						<span class="input-group-addon">Datet</span> <input
+							class="form-control" name="teamDate" type="date"
+							placeholder="Enter date" required
+							data-ng-model="tracker.teamDate" />
+					</div>
+					<br />
+
+					<div class="input-group">
+						<span class="input-group-addon"> manager Id </span> <input
+							class="form-control" name="team-mgr_id" type="text"
+							placeholder="Enter manager id" required
+							data-ng-model="tracker.team_mgr_id" />
+
+						<button type="submit" class="btn btn-primary pull-right"
+							data-ng-disabled="form.$invalid">Submit</button>
+					</div>
+				</form>
+			</div>
+
+		</div>
+		<div class="tab-content">
+			<div id="daterangetab" class="tab-pane fade">
+				<br />
+				<h3>Range of Dates</h3>
+				<form novalidate name="employeeDRQueryForm"
+					data-ng-submit="employeeDRQuery()">
+
+					<div class="input-group">
+						<span class="input-group-addon">Start Date</span><input
+							class="form-control" name="startDate" type="date"
+							placeholder="Enter start date" required
+							data-ng-model="tracker.sDate" />
+					</div>
+					<br />
+					<div class="input-group">
+						<span class="input-group-addon"> End Date </span><input
+							class="form-control" name="endDate" type="date"
+							placeholder="Enter end date" required
+							data-ng-model="tracker.eDate" />
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon"> Employee Id </span><input
+							class="form-control" name="E_id" type="text"
+							placeholder="Enter emp id" required data-ng-model="E_id" />
+					</div>
+					<br />
+					<div id="date-range-error" class="error-block"></div>
+					<br />
+					<button type="submit" class="btn btn-primary ">Submit</button>
+				</form>
+			</div>
+
+
+			<div id="datetab" class="tab-pane fade">
+				<br />
+				<h3>Particular Date</h3>
+				<form novalidate name="employeeDateForm"
+					data-ng-submit="employeeDateQuery()">
+					<div class="input-group">
+						<span class="input-group-addon">Date</span> <input
+							class="form-control" name="pdate" type="date"
+							placeholder="Enter date" required data-ng-model="tracker.Pdate" />
+					</div>
+					<br />
+					<div class="input-group">
+						<span class="input-group-addon"> employee id</span> <input
+							class="form-control" name="e_id" type="text"
+							placeholder="Enter employee id" required
+							data-ng-model="tracker.e_id" />
+					</div>
+					<br />
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+
+			<div id="timetab" class="tab-pane fade">
+				<br />
+				<h3>Time Range</h3>
+				<form novalidate name="employeeTimeForm"
+					data-ng-submit="employeeTRQuery()">
+
+					<div class="input-group">
+						<span class="input-group-addon"
+							style="min-width: 100px; text-align: right;">Date</span><input
+							class="form-control" name="Date" type="date"
+							placeholder="Enter date" required data-ng-model="tracker.TDate" />
+					</div>
+					<br />
+					<div class="input-group">
+						<span class="input-group-addon"
+							style="min-width: 100px; text-align: right;">Start Time</span> <input
+							class="form-control" name="startTime" type="time"
+							placeholder="Enter start time" required
+							data-ng-model="tracker.emp_startTime" />
+					</div>
+					<br />
+					<div class="input-group">
+						<span class="input-group-addon"
+							style="min-width: 100px; text-align: right;">End Time</span><input
+							class="form-control" name="endTime" type="time"
+							placeholder="Enter end time" required
+							data-ng-model="tracker.emp_endTime">
+					</div>
+					<br>
+					<div class="input-group">
+						<span class="input-group-addon"> employee id</span> <input
+							class="form-control" name="employee_id" type="text"
+							placeholder="Enter employee id" required
+							data-ng-model="tracker.employee_id1" />
+					</div>
+					<br /> <br />
+					<div id="time-range-error" class="error-block"></div>
+					<br />
+					<button type="submit" class="btn btn-primary pull-right">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="wrapper">
+		<div data-ng-hide="daterange"
+			class="col-xs-12 col-sm-12 col-md-7 col-lg-8">
+			<canvas data-ng-hide="datecorrect" id="RangeActiveDate"
+				class="chart data-chart-bar" width="450" height="200"
+				data-chart-data="dateData" data-chart-labels="datelabels"
+				data-chart-options="dateoptions" data-chart-series="series">
+	</canvas>
+		</div>
+		<div data-ng-hide="date" class="col-xs-12 col-sm-12 col-md-7 col-lg-8"
+			style="text-align: right;">
+			<canvas id="totalActiveTime"
+				class="chart data-chart-doughnut data-chart-labels" width="350px"
+				height="200px" data-chart-data="totalData"
+				data-chart-labels="labels" data-chart-options="options"
+				data-chart-colors="colors">
+			</canvas>
+			<div id="employee-hour-min-data-container"></div>
+		</div>
+
+		<div data-ng-hide="timerange"
+			class="col-xs-12 col-sm-12 col-md-7 col-lg-8"
+			style="text-align: center;">
+			<canvas data-ng-hide="timecorrect" id="RangeActiveTime"
+				class="chart data-chart-doughnut data-chart-labels" width="250"
+				height="200" data-chart-data="rangeData"
+				data-chart-labels="rangelabels" data-chart-options="rangeoptions"
+				data-chart-colors="rangecolors">
+	</canvas>
+		</div>
+		<div data-ng-hide="DateRange"
+			class="col-xs-5 col-sm-7 col-md-7 col-lg-8">
+			<canvas id="RangeActiveDateMgr" class="chart data-chart-bar"
+				width="1500" height="1200" data-chart-data="dateDataMgr"
+				data-chart-labels="datelabelsMgr" data-chart-series="seriesMgr"
+				data-chart-options="optionyaxis">
+           </canvas>
+		</div>
+		<div data-ng-hide="Date" class="col-xs-5 col-sm-6 col-md-7 col-lg-8">
+			<div data-ng-repeat="tracker in empDataList">
+				<canvas id="totalActiveTime1"
+					class="chart data-chart-doughnut data-chart-labels"
+					style="float: right" width="220" height="180"
+					data-chart-data="empDataList[$index]"
+					data-chart-labels="empLabelList[$index]"
+					data-chart-options="options1[$index]" data-chart-colors="colors">
+             </canvas>
+			</div>
+		</div>
+		<div data-ng-hide="TimeRange"
+			class="col-xs-12 col-sm-12 col-md-7 col-lg-8">
+			<div data-ng-repeat="trackerTR in rangeDataMgr">
+				<canvas id="totalActiveTime2"
+					class="chart data-chart-doughnut data-chart-labels"
+					style="float: left" width="220" height="180"
+					data-chart-data="rangeDataMgr[$index]"
+					data-chart-labels="rangelabelsMgr[$index]"
+					data-chart-options="rangeoptionsMgr[$index]"
+					data-chart-colors="rangecolorsMgr">
+             </canvas>
+			</div>
+		</div>
+	</div>
+
+</section>

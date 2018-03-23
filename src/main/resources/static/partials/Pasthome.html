@@ -1,0 +1,24 @@
+<section data-ng-init="initControlPast()">
+<div class="wrapper">
+<div data-ng-hide="daterange"
+			class="col-xs-12 col-sm-12 col-md-12 col-lg-11">
+			<ul class="nav nav-tabs nav-justified">
+				<li id="week-range"><a data-toggle="tab"
+					href="javascript:void(0)" data-ng-click="week()">Week</a></li>
+				<li id="month-range"><a data-toggle="tab"
+					href="javascript:void(0)" data-ng-click="month()">Month</a></li>
+				<li id="three-month-range"><a data-toggle="tab"
+					href="javascript:void(0)" data-ng-click="threeMonth()">3 Month</a></li>
+			</ul>
+			<div class="spl-chart">
+			<canvas  data-ng-hide="datecorrect" id="RangeActiveDate"
+				class="chart data-chart-bar" data-chart-data="dateData"
+				data-chart-labels="datelabels" data-chart-click="individual"
+				data-chart-options="dateoptions" data-chart-label="dateseries">
+	        </canvas>
+	        </div>
+	        <div id="employee-dr-hmd"></div>
+			<div class="leave-space1" id="employee-dr-hmd-container"></div>
+		</div>
+		</div>
+		</section>

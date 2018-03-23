@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet"
+	href="/webjars/bootstrap/3.3.6/css/bootstrap.css" />
+<link rel="stylesheet" href="/css/tracker.css" />
+<title>Tracker1</title>
+<base href="/" />
+</head>
+<body>
+	<!--Fixed Header -->
+	
+	<div class="container" role="main" style="padding-top: 60px;"
+		ng-app="trackerApp">
+		<button type="button" data-ng-controller="logoutController" class="btn btn-default pull-right" data-ng-init="initControl()" data-ng-hide="isLogin" data-ng-click="logout()">Logout</button>
+		<ng-view></ng-view>
+	</div>
+	
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script>
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+})
+var d = new Date();
+document.getElementById("date").innerHTML = d.getHours()+":"+d.getMinutes()+" "+d.toDateString();
+</script> 
+	
+	<script src="/webjars/jquery/2.0.3/jquery.min.js"></script>
+	<script src="/webjars/angularjs/1.5.8/angular.js"></script>
+	<script src="/webjars/angularjs/1.5.8/angular-resource.js"></script>
+	<script src="/webjars/angularjs/1.5.8/angular-route.js"></script>
+	<script src="/webjars/bootstrap/3.3.6/js/bootstrap.js"></script>
+	<script src="/js/app.js"></script>
+	<script src="/js/controller/employee-controller.js"></script>
+	<script src="/js/controller/manager-controller.js"></script>
+	<script src="/js/controller/login-controller.js"></script>
+	<script src="/js/controller/logout-controller.js"></script>
+	<script src="/js/component/particulardate/particular_date_bar.js"></script>
+	<script src="/js/component/dateRange/daterange_bar.js"></script>
+	
+	<script src="/js/controller/admin-controller.js"></script>
+	<script src="/js/service/tracker-service.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.2/Chart.bundle.js"></script> -->
+	<script src="/js/library/Chart.bundle.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/angular-chart.js/1.1.1/angular-chart.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/5.0.6/highcharts.js"></script>
+	<script src="/js/library/heatmap.js"></script>
+	<script src="/js/controller/javascript/common-scripts.js"></script>
+	<script src="/js/controller/javascript/highchart-options.js"></script>
+</body>
+</html>

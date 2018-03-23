@@ -1,0 +1,24 @@
+ <section>
+ <div data-ng-controller="RangeDateController" class="ibox-team-graph panel panel-default panel-body init-back">
+				<div class="ibox-title row">
+					<div class="col-md-10">
+						<b>Date Range Team Graph</b>
+					</div>
+					<div class=" ibox-tools col-md-2">
+						<a class="pull-right collapse-link anchor-cursor"
+							data-ng-click="clickteamgraph()"> <span
+							class=" team-graph glyphicon glyphicon-chevron-up"></span>
+						</a>
+					</div>
+				</div>
+
+				<div class=" ibox-content-team-graph row">
+					
+			<canvas id="RangeActiveDateMgr" class="chart data-chart-bar"
+				data-chart-data="dateDataMgr" data-chart-labels="datelabelsMgr"
+				data-chart-series="seriesMgr" data-chart-options="optionYaxis"
+				 data-chart-click="individualrange">
+           </canvas>
+           </div>
+           </div>
+           </section>
